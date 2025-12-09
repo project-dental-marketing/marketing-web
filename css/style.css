@@ -701,3 +701,45 @@ img {
         display: none;
     }
 }
+
+/* Tablet & Mobile Layout Adjustments */
+@media (max-width: 1024px) {
+
+    .features-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .feature-card,
+    .pricing-card {
+        padding: 2rem;
+    }
+
+    .pricing-card.best {
+        transform: none;
+        border-width: 1px;
+    }
+
+    /* Reset order/z-index relative to best card scaling which is now gone */
+    .pricing-card {
+        z-index: 1;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .feature-card,
+    .pricing-card {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+}
