@@ -1,44 +1,61 @@
 /**
- * Google Apps Script for Dentric Contact Form
+ * Google Apps Script for Dentric Contact Form (v2 - Secured)
  * 
- * 1. Extensions > Apps Script
- * 2. Paste this code.
- * 3. Deploy > New deployment > Select "Web app"
- * 4. Execute as: "Me" (나)
- * 5. Who has access: "Anyone" (누구나)
- * 6. Copy the "Web App URL" (Exec URL)
+ * 변경사항 (v2):
+ * - Honeypot 체크 추가 (`website_hp`)
+ * - Rate Limiting 추가 (IP 식별 불가로 전체 발송량 제한)
  */
 
 // 설정값 (Configuration)
 const CONFIG = {
-    // 알림을 받을 이메일 주소
     TO_EMAIL: "contact@dentric.co.kr", // 본인의 이메일로 변경하세요
-    // 이메일 제목
     EMAIL_SUBJECT: "[Dentric] 새로운 무료 진단 신청",
-    // 허용할 도메인 (CORS & Security)
     ALLOWED_ORIGINS: [
-        "https://project-dental-marketing.github.io", // 배포 도메인
-        "http://127.0.0.1:5500", // 로컬 테스트용
-        "http://localhost:5500"  // 로컬 테스트용
-    ]
+        "https://project-dental-marketing.github.io"
+    ],
+    // 보안 설정
+    SECURITY: {
+        HONEYPOT_FIELD: "website_hp", // 프론트엔드와 일치해야 함
+        MAX_REQUESTS_PER_MIN: 10      // 1분당 최대 허용 요청 수 (전역)
+    }
 };
 
 function doPost(e) {
     const lock = LockService.getScriptLock();
-    lock.tryLock(10000);
+    // 락 대기 시간을 짧게 줄여서 봇 공격 시 시스템 부하 감소
+    if (!lock.tryLock(5000)) {
+        return ContentService.createTextOutput(JSON.stringify({ 'result': 'error', 'error': 'Server Busy' }))
+            .setMimeType(ContentService.MimeType.JSON);
+    }
 
     try {
         const params = e.parameter;
 
-        // 1. CORS & Origin Check (Optional but recommended)
-        // GAS Web App은 기본적으로 CORS를 완벽히 제어하기 어렵지만, 
-        // Referer 헤더 등을 체크하여 로직단에서 거부할 수 있습니다.
+        // --- SECURITY CHECK 1: Honeypot ---
+        // 봇은 보통 모든 필드를 채웁니다. 숨겨진 필드에 값이 있으면 봇으로 간주합니다.
+        if (params[CONFIG.SECURITY.HONEYPOT_FIELD]) {
+            // 봇에게는 성공한 척 응답하지만, 실제로는 저장/발송하지 않음
+            return ContentService.createTextOutput(JSON.stringify({ 'result': 'success', 'row': 0 }))
+                .setMimeType(ContentService.MimeType.JSON);
+        }
+
+        // --- SECURITY CHECK 2: Rate Limiting ---
+        // CacheService를 사용하여 단기간 과도한 요청 방지
+        const cache = CacheService.getScriptCache();
+        const count = Number(cache.get('request_count_1min') || 0);
+
+        if (count >= CONFIG.SECURITY.MAX_REQUESTS_PER_MIN) {
+            return ContentService.createTextOutput(JSON.stringify({ 'result': 'error', 'error': 'Rate Limit Exceeded' }))
+                .setMimeType(ContentService.MimeType.JSON);
+        }
+        // 카운트 증가 (유효기간 60초)
+        cache.put('request_count_1min', String(count + 1), 60);
+
 
         // 2. 데이터 저장 (Save to Sheet)
         const doc = SpreadsheetApp.getActiveSpreadsheet();
         const sheet = doc.getSheetByName('Contact') || doc.insertSheet('Contact');
 
-        // 헤더가 없으면 생성
         if (sheet.getLastRow() === 0) {
             sheet.appendRow(['Timestamp', 'Hospital', 'Name', 'Phone', 'Message']);
         }
@@ -69,15 +86,13 @@ function doPost(e) {
             htmlBody: htmlBody
         });
 
-        // 4. 성공 응답
         return ContentService
             .createTextOutput(JSON.stringify({ 'result': 'success', 'row': sheet.getLastRow() }))
             .setMimeType(ContentService.MimeType.JSON);
 
     } catch (e) {
-        // 5. 에러 응답
         return ContentService
-            .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e }))
+            .createTextOutput(JSON.stringify({ 'result': 'error', 'error': e.toString() }))
             .setMimeType(ContentService.MimeType.JSON);
     } finally {
         lock.releaseLock();

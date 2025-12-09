@@ -222,6 +222,11 @@
                             <textarea id="message" name="message" rows="4" placeholder="궁금하신 점이나 현재 고민을 적어주세요."
                                 data-i18n-ph="ph_message"></textarea>
                         </div>
+                        <!-- Honeypot Field (Bots will fill this, humans won't) -->
+                        <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;">
+                            <label for="website_hp">Website Website</label>
+                            <input type="text" id="website_hp" name="website_hp" autocomplete="off">
+                        </div>
                         <button type="submit" class="btn btn-primary btn-block" data-i18n="btn_submit">무료 진단
                             신청하기</button>
                     </form>
