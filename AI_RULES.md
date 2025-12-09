@@ -12,6 +12,7 @@
 
 ## 2. Git Workflow (작업 방식)
 이제부터 모든 작업은 **브랜치(Branch)**를 생성하여 진행합니다.
+브랜치는 main에서 생성합니다.
 1.  **Branch Creation**: `main`에서 직접 작업 금지.
     - 기능 추가: `feature/기능명` (예: `feature/dark-mode`)
     - 버그 수정: `fix/버그명` (예: `fix/mobile-menu`)

@@ -4,7 +4,7 @@
 Vanilla HTML, CSS, JavaScript로 구축된 정적 웹사이트입니다.
 
 ## 🔗 Quick Links
-- **[🌐 Live Demo](https://project-dental-marketing.github.io/)**
+- **[🌐 Live Demo](https://project-dental-marketing.github.io/marketing-web/)**
 - **[🤖 AI Work Rules (작업 규칙)](AI_RULES.md)**
   - AI 어시스턴트는 작업 전 반드시 이 문서를 참고해주세요.
 - **[📄 Deployment Guide](docs/deployment.md)**
