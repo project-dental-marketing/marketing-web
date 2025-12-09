@@ -36,11 +36,16 @@
             </a>
             <nav id="nav">
                 <ul>
-                    <li><a href="#about">소개</a></li>
-                    <li><a href="#services">서비스</a></li>
-                    <li><a href="#process">프로세스</a></li>
-                    <li><a href="#contact" class="btn-sm">무료 진단 신청</a></li>
+                    <li><a href="#about" data-i18n="nav_about">소개</a></li>
+                    <li><a href="#services" data-i18n="nav_services">서비스</a></li>
+                    <li><a href="#process" data-i18n="nav_process">프로세스</a></li>
+                    <li><a href="#contact" class="btn-sm" data-i18n="nav_contact">무료 진단 신청</a></li>
                 </ul>
+                <div class="lang-toggle">
+                    <a href="#" id="lang-ko" class="active">KR</a>
+                    <span class="divider">|</span>
+                    <a href="#" id="lang-en">EN</a>
+                </div>
             </nav>
             <button id="mobile-menu-btn" aria-label="메뉴 열기">
                 <span></span>
@@ -55,19 +60,19 @@
         <section id="hero">
             <div class="container">
                 <div class="hero-content">
-                    <span class="badge">Med-Tech Marketing</span>
-                    <h1 class="hero-title">
+                    <span class="badge" data-i18n="hero_badge">Med-Tech Marketing</span>
+                    <h1 class="hero-title" data-i18n="hero_title">
                         치과 마케팅,<br>
                         이제 <span class="highlight">감</span>이 아닌<br>
                         <span class="text-gradient">데이터</span>로 증명합니다.
                     </h1>
-                    <p class="hero-desc">
+                    <p class="hero-desc" data-i18n="hero_desc">
                         10년 차 영업 전문가와 10년 차 개발자가 만드는<br class="mobile-hide">
                         병원 성장 시스템, Dentric이 귀하의 병원을 분석해 드립니다.
                     </p>
                     <div class="hero-btns">
-                        <a href="#contact" class="btn btn-primary">무료 진단 신청하기</a>
-                        <a href="#services" class="btn btn-secondary">서비스 알아보기</a>
+                        <a href="#contact" class="btn btn-primary" data-i18n="btn_diagnosis">무료 진단 신청하기</a>
+                        <a href="#services" class="btn btn-secondary" data-i18n="btn_services">서비스 알아보기</a>
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -86,24 +91,24 @@
         <section id="about">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="section-title">Why Dentric?</h2>
-                    <p class="section-subtitle">치과(Dental) + 데이터(Metric) + 비법(Trick)</p>
+                    <h2 class="section-title" data-i18n="about_title">Why Dentric?</h2>
+                    <p class="section-subtitle" data-i18n="about_subtitle">치과(Dental) + 데이터(Metric) + 비법(Trick)</p>
                 </div>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="icon">🩺</div>
-                        <h3>Dental Expertise</h3>
-                        <p>10년 차 치과 영업 전문가의<br>현장 노하우와 실제적인 솔루션</p>
+                        <h3 data-i18n="feature_1_title">Dental Expertise</h3>
+                        <p data-i18n="feature_1_desc">10년 차 치과 영업 전문가의<br>현장 노하우와 실제적인 솔루션</p>
                     </div>
                     <div class="feature-card">
                         <div class="icon">📈</div>
-                        <h3>Metric Driven</h3>
-                        <p>직관에 의존하지 않는<br>철저한 데이터 기반 의사결정</p>
+                        <h3 data-i18n="feature_2_title">Metric Driven</h3>
+                        <p data-i18n="feature_2_desc">직관에 의존하지 않는<br>철저한 데이터 기반 의사결정</p>
                     </div>
                     <div class="feature-card">
                         <div class="icon">💡</div>
-                        <h3>Winning Trick</h3>
-                        <p>경쟁 병원과의 차별화를<br>만들어내는 덴트릭만의 전략</p>
+                        <h3 data-i18n="feature_3_title">Winning Trick</h3>
+                        <p data-i18n="feature_3_desc">경쟁 병원과의 차별화를<br>만들어내는 덴트릭만의 전략</p>
                     </div>
                 </div>
             </div>
@@ -113,53 +118,53 @@
         <section id="services">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="section-title">Our Solutions</h2>
-                    <p class="section-subtitle">병원의 성장 단계에 맞춘 최적의 솔루션을 제공합니다.</p>
+                    <h2 class="section-title" data-i18n="services_title">Our Solutions</h2>
+                    <p class="section-subtitle" data-i18n="services_subtitle">병원의 성장 단계에 맞춘 최적의 솔루션을 제공합니다.</p>
                 </div>
                 <div class="pricing-grid">
                     <div class="pricing-card">
                         <div class="card-header">
-                            <h3>Standard</h3>
-                            <span class="price">노출형</span>
+                            <h3 data-i18n="std_title">Standard</h3>
+                            <span class="price" data-i18n="std_sub">노출형</span>
                         </div>
                         <ul class="features-list">
-                            <li>✅ 네이버 플레이스 최적화</li>
-                            <li>✅ 브랜드 블로그 포스팅 (주 2회)</li>
-                            <li>✅ 영수증 리뷰 관리</li>
+                            <li data-i18n="std_li_1">✅ 네이버 플레이스 최적화</li>
+                            <li data-i18n="std_li_2">✅ 브랜드 블로그 포스팅 (주 2회)</li>
+                            <li data-i18n="std_li_3">✅ 영수증 리뷰 관리</li>
                         </ul>
                         <div class="card-footer">
-                            <p class="recommend">기본 마케팅이 필요한 개원 초기</p>
+                            <p class="recommend" data-i18n="std_rec">기본 마케팅이 필요한 개원 초기</p>
                         </div>
                     </div>
                     <div class="pricing-card best">
                         <div class="badge-best">MOST POPULAR</div>
                         <div class="card-header">
-                            <h3>Premium</h3>
-                            <span class="price">관리형</span>
+                            <h3 data-i18n="prm_title">Premium</h3>
+                            <span class="price" data-i18n="prm_sub">관리형</span>
                         </div>
                         <ul class="features-list">
-                            <li>✅ <strong>Standard 전체 포함</strong></li>
-                            <li>🚀 <strong>실시간 성과 대시보드</strong></li>
-                            <li>🤖 <strong>예약 안내 AI 챗봇</strong></li>
-                            <li>📢 파워링크/소셜 광고 대행</li>
+                            <li data-i18n="prm_li_1">✅ <strong>Standard 전체 포함</strong></li>
+                            <li data-i18n="prm_li_2">🚀 <strong>실시간 성과 대시보드</strong></li>
+                            <li data-i18n="prm_li_3">🤖 <strong>예약 안내 AI 챗봇</strong></li>
+                            <li data-i18n="prm_li_4">📢 파워링크/소셜 광고 대행</li>
                         </ul>
                         <div class="card-footer">
-                            <p class="recommend">체계적인 성장이 필요한 성장기</p>
+                            <p class="recommend" data-i18n="prm_rec">체계적인 성장이 필요한 성장기</p>
                         </div>
                     </div>
                     <div class="pricing-card">
                         <div class="card-header">
-                            <h3>VIP</h3>
-                            <span class="price">파트너형</span>
+                            <h3 data-i18n="vip_title">VIP</h3>
+                            <span class="price" data-i18n="vip_sub">파트너형</span>
                         </div>
                         <ul class="features-list">
-                            <li>✅ <strong>Premium 전체 포함</strong></li>
-                            <li>🎓 데스크/상담실장 CS 교육</li>
-                            <li>🤝 월 1회 방문 경영 컨설팅</li>
-                            <li>💻 홈페이지 리뉴얼/유지보수</li>
+                            <li data-i18n="vip_li_1">✅ <strong>Premium 전체 포함</strong></li>
+                            <li data-i18n="vip_li_2">🎓 데스크/상담실장 CS 교육</li>
+                            <li data-i18n="vip_li_3">🤝 월 1회 방문 경영 컨설팅</li>
+                            <li data-i18n="vip_li_4">💻 홈페이지 리뉴얼/유지보수</li>
                         </ul>
                         <div class="card-footer">
-                            <p class="recommend">확 확실한 도약이 필요한 완성기</p>
+                            <p class="recommend" data-i18n="vip_rec">확실한 도약이 필요한 완성기</p>
                         </div>
                     </div>
                 </div>
@@ -171,16 +176,17 @@
             <div class="container">
                 <div class="process-wrapper">
                     <div class="process-text">
-                        <h2 class="section-title">Experts</h2>
-                        <p class="lead">각 분야 10년 차 전문가들의 시너지</p>
+                        <h2 class="section-title" data-i18n="experts_title">Experts</h2>
+                        <p class="lead" data-i18n="experts_lead">각 분야 10년 차 전문가들의 시너지</p>
                         <ul class="expert-list">
                             <li>
-                                <span class="role">Business Director</span>
-                                <span class="desc">보건소 민원 방지부터 데스크 응대 점검까지, 병원 내부의 리스크를 관리합니다.</span>
+                                <span class="role" data-i18n="role_biz">Business Director</span>
+                                <span class="desc" data-i18n="desc_biz">보건소 민원 방지부터 데스크 응대 점검까지, 병원 내부의 리스크를
+                                    관리합니다.</span>
                             </li>
                             <li>
-                                <span class="role">Tech Director</span>
-                                <span class="desc">단순 반복 업무 자동화와 데이터 분석으로 마케팅 효율을 극대화합니다.</span>
+                                <span class="role" data-i18n="role_tech">Tech Director</span>
+                                <span class="desc" data-i18n="desc_tech">단순 반복 업무 자동화와 데이터 분석으로 마케팅 효율을 극대화합니다.</span>
                             </li>
                         </ul>
                     </div>
@@ -198,28 +204,33 @@
             <div class="container small-container">
                 <div class="contact-box">
                     <div class="text-center">
-                        <h2 class="section-title">Free Diagnosis</h2>
-                        <p class="section-subtitle">우리 병원의 현재 상태, 무료로 진단받아보세요.<br>영업일 기준 24시간 이내에 연락드립니다.</p>
+                        <h2 class="section-title" data-i18n="contact_title">Free Diagnosis</h2>
+                        <p class="section-subtitle" data-i18n="contact_subtitle">우리 병원의 현재 상태, 무료로 진단받아보세요.<br>영업일 기준
+                            24시간 이내에 연락드립니다.</p>
                     </div>
                     <form id="contact-form" class="contact-form">
                         <div class="form-group">
-                            <label for="hospital">병원명</label>
-                            <input type="text" id="hospital" name="hospital" required placeholder="예: 덴트릭치과">
+                            <label for="hospital" data-i18n="label_hospital">병원명</label>
+                            <input type="text" id="hospital" name="hospital" required placeholder="예: 덴트릭치과"
+                                data-i18n-ph="ph_hospital">
                         </div>
                         <div class="form-group">
-                            <label for="name">담당자명</label>
-                            <input type="text" id="name" name="name" required placeholder="홍길동 원장/실장">
+                            <label for="name" data-i18n="label_name">담당자명</label>
+                            <input type="text" id="name" name="name" required placeholder="홍길동 원장/실장"
+                                data-i18n-ph="ph_name">
                         </div>
                         <div class="form-group">
-                            <label for="phone">연락처</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="010-0000-0000">
+                            <label for="phone" data-i18n="label_phone">연락처</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="010-0000-0000"
+                                data-i18n-ph="ph_phone">
                         </div>
                         <div class="form-group">
-                            <label for="message">문의사항 (선택)</label>
-                            <textarea id="message" name="message" rows="4"
-                                placeholder="궁금하신 점이나 현재 고민을 적어주세요."></textarea>
+                            <label for="message" data-i18n="label_message">문의사항 (선택)</label>
+                            <textarea id="message" name="message" rows="4" placeholder="궁금하신 점이나 현재 고민을 적어주세요."
+                                data-i18n-ph="ph_message"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">무료 진단 신청하기</button>
+                        <button type="submit" class="btn btn-primary btn-block" data-i18n="btn_submit">무료 진단
+                            신청하기</button>
                     </form>
                 </div>
             </div>
@@ -231,7 +242,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>Dentric</h3>
-                    <p>데이터 기반 치과 경영 솔루션</p>
+                    <p data-i18n="footer_slogan">데이터 기반 치과 경영 솔루션</p>
                 </div>
                 <div class="footer-info">
                     <p>Business Director. 최정호 | Tech Director. 정종선</p>
@@ -242,6 +253,7 @@
         </div>
     </footer>
 
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 

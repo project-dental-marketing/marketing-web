@@ -164,6 +164,40 @@ img {
     color: var(--color-navy);
 }
 
+/* Language Toggle */
+.lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.lang-toggle a {
+    color: var(--color-gray-400);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.lang-toggle a.active,
+.lang-toggle a:hover {
+    color: var(--color-navy);
+}
+
+.lang-toggle .divider {
+    color: var(--color-gray-200);
+}
+
+/* Mobile Responsive Adjustments for Lang Toggle */
+@media (max-width: 768px) {
+    .lang-toggle {
+        margin-left: 0;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+}
+
 #mobile-menu-btn {
     display: none;
     background: none;
