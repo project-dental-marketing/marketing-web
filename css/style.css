@@ -164,37 +164,65 @@ img {
     color: var(--color-navy);
 }
 
-/* Language Toggle */
-.lang-toggle {
+/* Language Toggle - Segmented Control */
+.lang-switch {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    position: relative;
+    background-color: var(--color-gray-100);
+    padding: 4px;
+    border-radius: 30px;
     margin-left: 2rem;
-    font-size: 0.9rem;
-    font-weight: 600;
+    border: 1px solid var(--color-gray-200);
 }
 
-.lang-toggle a {
-    color: var(--color-gray-400);
-    text-decoration: none;
-    transition: color 0.2s;
+.lang-btn {
+    position: relative;
+    z-index: 2;
+    background: none;
+    border: none;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.lang-toggle a.active,
-.lang-toggle a:hover {
+.lang-btn.active {
     color: var(--color-navy);
 }
 
-.lang-toggle .divider {
-    color: var(--color-gray-200);
+.switch-slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 40px;
+    height: calc(100% - 8px);
+    background-color: var(--color-white);
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 1;
+}
+
+/* Check logic in JS to move slider: this initial CSS relies on JS toggling classes or we can simple use class-based slider positioning if we fix the width */
+/* Alternative: simpler active state without distinct slider element if JS complex, but slider is nicer. 
+   Let's keep it simple with class-based background if slider is 'hard' to animate purely with unknown width. 
+   Actually, with fixed width 40px buttons, we can just transform the slider.
+*/
+.lang-switch.en-active .switch-slider {
+    transform: translateX(40px);
 }
 
 /* Mobile Responsive Adjustments for Lang Toggle */
 @media (max-width: 768px) {
-    .lang-toggle {
+    .lang-switch {
         margin-left: 0;
         margin-top: 1rem;
-        justify-content: center;
     }
 }
 
