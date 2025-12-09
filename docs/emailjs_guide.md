@@ -41,9 +41,15 @@ Dentric 웹사이트의 '무료 진단 신청' 기능을 작동시키기 위해 
 
 ## 5. 보안 설정 (권장)
 1. **"Security"** 탭으로 이동 (또는 Account 페이지 내 Security 섹션)
-2. **"Allowed Origins"** (허용 도메인)에 웹사이트 주소 추가
-   - 개발 중에는 `localhost` 등을 추가
-   - 실제 배포 시 `https://dentric.co.kr` 등 실제 도메인만 남겨두기
+4. **"Allowed Origins"** (허용 도메인)에 웹사이트 주소 추가
+   - **`https://project-dental-marketing.github.io`** 입력 후 `Add Domain` 클릭
+   - (개발 중에는 `localhost`도 필요할 수 있음)
+
+5. **API Settings 설정**
+   - ✅ **Allow EmailJS API for non-browser applications**: **체크 해제 (OFF)**
+     - 브라우저에서만 작동하도록 제한하여 보안을 높입니다.
+   - ✅ **Use Private Key**: **체크 해제 (OFF)**
+     - 우리는 Public Key 방식을 사용하므로 꺼두셔야 합니다. 이걸 켜면 작동하지 않습니다.
 
 ---
 
