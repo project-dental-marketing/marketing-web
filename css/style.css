@@ -136,6 +136,7 @@ img {
 #header .container {
     display: flex;
     justify-content: space-between;
+    /* Fallback */
     align-items: center;
     width: 100%;
 }
@@ -147,6 +148,14 @@ img {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    /* Prevent shrinking */
+    flex-shrink: 0;
+}
+
+/* Nav Desktop: Push to right */
+#nav {
+    margin-left: auto;
+    margin-right: 2rem;
 }
 
 #nav ul {
@@ -164,37 +173,83 @@ img {
     color: var(--color-navy);
 }
 
-/* Language Toggle */
-.lang-toggle {
+/* Language Toggle - Segmented Control */
+.lang-switch {
     display: flex;
+    position: relative;
+    background-color: var(--color-gray-100);
+    padding: 4px;
+    border-radius: 30px;
+    /* margin-left removed, handled by sibling layout */
+    border: 1px solid var(--color-gray-200);
+    flex-shrink: 0;
+}
+
+.lang-btn {
+    position: relative;
+    z-index: 2;
+    background: none;
+    border: none;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-gray-600);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    width: 40px;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 0.5rem;
-    margin-left: 2rem;
-    font-size: 0.9rem;
-    font-weight: 600;
 }
 
-.lang-toggle a {
-    color: var(--color-gray-400);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.lang-toggle a.active,
-.lang-toggle a:hover {
+.lang-btn.active {
     color: var(--color-navy);
 }
 
-.lang-toggle .divider {
-    color: var(--color-gray-200);
+.switch-slider {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 40px;
+    height: calc(100% - 8px);
+    background-color: var(--color-white);
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 1;
 }
 
-/* Mobile Responsive Adjustments for Lang Toggle */
+.lang-switch.en-active .switch-slider {
+    transform: translateX(40px);
+}
+
+/* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-    .lang-toggle {
+
+    /* Header Container on Mobile: Logo - Lang - Burger */
+    #header .container {
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+    /* Move nav to absolute drawer, already defined below but ensure no conflict */
+    #nav {
+        margin: 0;
+        /* Reset desktop margin */
+        order: 4;
+        /* Force to end in source order but visual controlled by absolute */
+    }
+
+    .lang-switch {
+        margin-left: auto;
+        /* Push to right, burger follows */
+        margin-right: 1rem;
+        transform: scale(0.9);
+        /* Slightly smaller on mobile */
+    }
+
+    #mobile-menu-btn {
         margin-left: 0;
-        margin-top: 1rem;
-        justify-content: center;
     }
 }
 

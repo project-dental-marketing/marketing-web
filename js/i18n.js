@@ -167,14 +167,17 @@ function setLanguage(lang) {
     // Update Toggle Button State
     const btnKo = document.getElementById('lang-ko');
     const btnEn = document.getElementById('lang-en');
+    const switchContainer = document.querySelector('.lang-switch'); // Select the container
 
-    if (btnKo && btnEn) {
+    if (btnKo && btnEn && switchContainer) {
         if (lang === 'ko') {
             btnKo.classList.add('active');
             btnEn.classList.remove('active');
+            switchContainer.classList.remove('en-active'); // Move slider to left
         } else {
             btnKo.classList.remove('active');
             btnEn.classList.add('active');
+            switchContainer.classList.add('en-active'); // Move slider to right
         }
     }
 }
