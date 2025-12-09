@@ -136,6 +136,7 @@ img {
 #header .container {
     display: flex;
     justify-content: space-between;
+    /* Fallback */
     align-items: center;
     width: 100%;
 }
@@ -147,6 +148,14 @@ img {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    /* Prevent shrinking */
+    flex-shrink: 0;
+}
+
+/* Nav Desktop: Push to right */
+#nav {
+    margin-left: auto;
+    margin-right: 2rem;
 }
 
 #nav ul {
@@ -171,8 +180,9 @@ img {
     background-color: var(--color-gray-100);
     padding: 4px;
     border-radius: 30px;
-    margin-left: 2rem;
+    /* margin-left removed, handled by sibling layout */
     border: 1px solid var(--color-gray-200);
+    flex-shrink: 0;
 }
 
 .lang-btn {
@@ -209,20 +219,37 @@ img {
     z-index: 1;
 }
 
-/* Check logic in JS to move slider: this initial CSS relies on JS toggling classes or we can simple use class-based slider positioning if we fix the width */
-/* Alternative: simpler active state without distinct slider element if JS complex, but slider is nicer. 
-   Let's keep it simple with class-based background if slider is 'hard' to animate purely with unknown width. 
-   Actually, with fixed width 40px buttons, we can just transform the slider.
-*/
 .lang-switch.en-active .switch-slider {
     transform: translateX(40px);
 }
 
-/* Mobile Responsive Adjustments for Lang Toggle */
+/* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
+
+    /* Header Container on Mobile: Logo - Lang - Burger */
+    #header .container {
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+    /* Move nav to absolute drawer, already defined below but ensure no conflict */
+    #nav {
+        margin: 0;
+        /* Reset desktop margin */
+        order: 4;
+        /* Force to end in source order but visual controlled by absolute */
+    }
+
     .lang-switch {
+        margin-left: auto;
+        /* Push to right, burger follows */
+        margin-right: 1rem;
+        transform: scale(0.9);
+        /* Slightly smaller on mobile */
+    }
+
+    #mobile-menu-btn {
         margin-left: 0;
-        margin-top: 1rem;
     }
 }
 
