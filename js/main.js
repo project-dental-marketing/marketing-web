@@ -66,17 +66,38 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerText = '전송 중...';
             submitBtn.disabled = true;
 
-            // EmailJS Configuration
-            const serviceID = 'dentric';
-            const templateID = 'template_gr53wfg';
+            // GAS Web App URL (User need to update this after deployment)
+            // GAS Web App URL
+            const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwK4RD1NvgGrEZUtBBrRek53K1rfX5sixaEp0qKllhKxFnIgoVMVp4uqJngtypDlCVQ3Q/exec";
 
-            // Send Email
-            emailjs.sendForm(serviceID, templateID, contactForm)
-                .then(() => {
-                    alert('무료 진단 신청이 성공적으로 접수되었습니다.\n빠른 시일 내에 연락드리겠습니다.');
-                    contactForm.reset();
-                }, (err) => {
-                    alert('전송에 실패했습니다. 다시 시도해주세요.\n에러: ' + JSON.stringify(err));
+            // Create FormData
+            const formData = new FormData(contactForm);
+
+            // Check if URL is set
+            if (GAS_WEB_APP_URL.includes("YOUR_GAS_WEB_APP_URL_HERE")) {
+                alert("시스템 설정이 완료되지 않았습니다. 관리자에게 문의해주세요.\n(Google Apps Script URL 미설정)");
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+                return;
+            }
+
+            // Send via Fetch
+            fetch(GAS_WEB_APP_URL, {
+                method: "POST",
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === "success") {
+                        alert("무료 진단 신청이 성공적으로 접수되었습니다.\n빠른 시일 내에 연락드리겠습니다.");
+                        contactForm.reset();
+                    } else {
+                        throw new Error(JSON.stringify(data));
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("전송에 실패했습니다. 다음 사항을 확인해주세요:\n1. GAS 배포 URL이 정확한지\n2. '누구나(Anyone)' 권한으로 배포되었는지");
                 })
                 .finally(() => {
                     submitBtn.innerText = originalBtnText;
